@@ -11,14 +11,16 @@ namespace LibrarySystem
         private int id;
         private string title;
         private string author;
+        private string description;
         private bool isCheckedOut;
 
         // Constructor
-        public Book(int id, string title, string author)
+        public Book(int id, string title, string author, string description)
         {
             this.id = id;
             this.title = title;
             this.author = author;
+            this.description = description;
             this.isCheckedOut = false;
         }
 
@@ -44,7 +46,13 @@ namespace LibrarySystem
                 return isCheckedOut; 
             } 
         }
-      
+        public string getDescription
+        {
+            get
+            {
+                return description;
+            }
+        }
 
         // SOLID, Single Responsibility:
         // this class only deals with book related actions, not UI or database.
@@ -78,6 +86,10 @@ namespace LibrarySystem
         public virtual void displayBookInfo()
         {
             Console.WriteLine("[" + id + "] " + title + " by " + author + " - " + (isCheckedOut ? "Checked Out" : "Available"));
+        }
+        public override string ToString()
+        {
+            return $"[{id}] {title} by {author}";
         }
     }
 }
