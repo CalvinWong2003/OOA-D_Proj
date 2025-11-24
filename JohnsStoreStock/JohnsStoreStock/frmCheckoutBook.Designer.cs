@@ -37,7 +37,7 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(164, 26);
+            this.txtSearch.Location = new System.Drawing.Point(214, 26);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(443, 20);
             this.txtSearch.TabIndex = 11;
@@ -48,9 +48,9 @@
             // dataGridResults
             // 
             this.dataGridResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridResults.Location = new System.Drawing.Point(83, 55);
+            this.dataGridResults.Location = new System.Drawing.Point(69, 55);
             this.dataGridResults.Name = "dataGridResults";
-            this.dataGridResults.Size = new System.Drawing.Size(597, 218);
+            this.dataGridResults.Size = new System.Drawing.Size(664, 218);
             this.dataGridResults.TabIndex = 10;
             // 
             // btnBack

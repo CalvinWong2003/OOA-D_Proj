@@ -56,6 +56,7 @@ namespace LibrarySystem
                 {
                     selectedBook.Checkout();
                     MessageBox.Show($"Book '{selectedBook.getTitle}' has been checked out.");
+                    Book.checkoutCount++;
                 }
             }
             else

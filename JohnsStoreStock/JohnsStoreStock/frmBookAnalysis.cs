@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibrarySystem;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,13 +21,7 @@ namespace LibrarySystem
             InitializeComponent();
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            frmMainMenu mainMenu = new frmMainMenu();
-            mainMenu.Show();
-
-            this.Hide();
-        }
+        
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -55,20 +50,29 @@ namespace LibrarySystem
             }
 
         }
-        private void lstResults_DoubleClick(object sender, EventArgs e)
+        
+
+        private void lstResults_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstResults.SelectedItem is Book selectedBook)
             {
-                MessageBox.Show(
-                    $"ID: {selectedBook.getID}\n" +
+                string details =
                     $"Title: {selectedBook.getTitle}\n" +
-                    $"Author: {selectedBook.getAuthor}\n" +
-                    $"Status: {(selectedBook.getCheckOutStatus ? "Checked Out" : "Available")}",
-                    "Book Details",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
+                    $"Author: {selectedBook.getAuthor}\n\n" +
+                    $"Description:\n{selectedBook.getDescription}\n\n" +
+                    $"Status: {(selectedBook.getCheckOutStatus ? "Checked Out" : "Available")}\n" +
+                    $"Times Checked Out: {selectedBook.getCheckoutCount}";
+
+                MessageBox.Show(details, "Book Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            frmMainMenu mainMenu = new frmMainMenu();
+            mainMenu.Show();
+
+            this.Hide();
         }
     }
 }

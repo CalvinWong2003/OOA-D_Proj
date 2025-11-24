@@ -13,6 +13,9 @@ namespace LibrarySystem
         private string author;
         private string description;
         private bool isCheckedOut;
+        public static int checkoutCount = 0;
+
+        public int getCheckoutCount => checkoutCount;
 
         // Constructor
         public Book(int id, string title, string author, string description)
