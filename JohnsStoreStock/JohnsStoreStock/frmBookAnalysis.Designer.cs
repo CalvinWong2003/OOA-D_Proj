@@ -83,12 +83,13 @@
             this.lstResults.Name = "lstResults";
             this.lstResults.Size = new System.Drawing.Size(764, 304);
             this.lstResults.TabIndex = 0;
+            this.lstResults.SelectedIndexChanged += new System.EventHandler(this.lstResults_SelectedIndexChanged);
             // 
             // frmBookAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(808, 548);
             this.Controls.Add(this.grpResults);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
