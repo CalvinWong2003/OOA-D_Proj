@@ -1,0 +1,80 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace LibrarySystem
+{
+    // AEIP - Abstraction: This class represents the concept of a Customer.
+    public class Customer
+    {
+        // AEIP - Encapsulation: Keep fields private to protect the data.
+        private int AccountID;
+        private string Name;
+        private int Age;
+        private string Email;
+        public List<Book> CheckedOutBooks {get; private set;}
+        public static int booksCheckoutCount = 0;
+
+        public int getCheckoutCount => booksCheckoutCount;
+
+        // Constructor
+        public Customer(int AccountID, string Name, int Age, string Email)
+        {
+            this.AccountID = AccountID;
+            this.Name = Name;
+            this.Age = Age;
+            this.Email = Email;
+            this.booksCheckoutCount = booksCheckoutCount;
+        }
+
+        // Public properties to safely access data (Encapsulation)
+        public int getAccountID { 
+            get { 
+                return AccountID;
+            }
+        }
+        public string getName {
+            get {
+                return Name;
+            }
+        }
+        public int getAge { 
+            get {
+                return Age; 
+            }
+        }
+        public string getEmail
+        {
+            get
+            {
+                return Email;
+            }
+        }
+        public void setAccountID(int accountID)
+        {
+            this.AccountID = accountID;
+        }
+        public void setName(string name)
+        {
+            this.Name = name;
+        }
+
+        public void setAge(int age)
+        {
+            this.Age = age;
+        }
+
+        public void setEmail(string email)
+        {
+            this.Email = email;
+        }
+
+        public virtual void displayCustomerInfo()
+        {
+            Console.WriteLine("[" + AccountID + "] " + Name + "\nAge:  " + Age + "\nEmail: " + Email);
+        }
+        public override string ToString()
+        {
+            return $"["+ {AccountID} + "]" + {Name} {Age} {Email}";
+        }
+    }
+}
