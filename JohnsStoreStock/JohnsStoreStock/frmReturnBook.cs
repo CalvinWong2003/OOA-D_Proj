@@ -15,6 +15,7 @@ namespace LibrarySystem
     {
         private Library library;
         private Book book;
+        private Customer customer;
         public frmMainMenu mainMenu;
         private frmMainMenu frmMainMenu;
 
@@ -30,6 +31,16 @@ namespace LibrarySystem
             if (cboName.Text != ("") && txtTitle.Text != ("")) // If both are selected.
             {
                // Book.ReturnBook();
+               bool success = library.Return(bookID)
+
+               if(success)
+               {
+                   MessageBox.Show("Book returned successfully!");
+               }
+               else
+               {
+                   MessageBox.Show("Return Failed. Customer does not have this book");
+               }
             }
             else
             {

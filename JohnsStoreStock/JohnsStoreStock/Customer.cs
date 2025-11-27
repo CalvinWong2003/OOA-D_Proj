@@ -1,9 +1,12 @@
-﻿using System;
+﻿using LibrarySystem;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace LibrarySystem
+namespace JohnsStoreStock
 {
-    // AEIP - Abstraction: This class represents the concept of a Customer.
     public class Customer
     {
         // AEIP - Encapsulation: Keep fields private to protect the data.
@@ -11,15 +14,15 @@ namespace LibrarySystem
         private string Name;
         private int Age;
         private string Email;
-        public LinkedList<Book> CheckedOutBooks {get; set;} = new LinkedList<Book>();
+        public LinkedList<Book> CheckedOutBooks { get; set; } = new LinkedList<Book>();
         public static int booksCheckoutCount = 0;
 
         public int getCheckoutCount => booksCheckoutCount;
 
         // Constructor
-        public Customer(int AccountID, string Name, int Age, string Email)
+        public Customer(List<Customer> customerList, string Name, int Age, string Email)
         {
-            this.AccountID = AccountID;
+            AccountID = getNextAccountID(customerList);
             this.Name = Name;
             this.Age = Age;
             this.Email = Email;
@@ -27,19 +30,25 @@ namespace LibrarySystem
         }
 
         // Public properties to safely access data (Encapsulation)
-        public int getAccountID { 
-            get { 
+        public int getAccountID
+        {
+            get
+            {
                 return AccountID;
             }
         }
-        public string getName {
-            get {
+        public string getName
+        {
+            get
+            {
                 return Name;
             }
         }
-        public int getAge { 
-            get {
-                return Age; 
+        public int getAge
+        {
+            get
+            {
+                return Age;
             }
         }
         public string getEmail
@@ -68,17 +77,27 @@ namespace LibrarySystem
             this.Email = email;
         }
 
-        publilc void ShowCheckedOutBooks()
+        public void ShowCheckedOutBooks()
         {
             Console.WriteLine($"{Name}'s Checked Out Books:");
-            foreach(var book in CheckedOutBooks)
+            foreach (var book in CheckedOutBooks)
             {
-                Console.WriteLine(" - " + book.BookID + ", " + book.Name + ", " + book.Author);
+                //Console.WriteLine(" - " + book.BookID + ", " + book.Name + ", " + book.Author);
             }
         }
         public override string ToString()
         {
-            return"";
+            return "";
+        }
+
+        public static int getNextAccountID(List<Customer> customerList)
+        {
+            if(customerList.Count == 0)
+            {
+                return 1;
+            }
+            int maxID = customerList.Max(c => c.AccountID);
+            return maxID + 1;
         }
     }
 }
